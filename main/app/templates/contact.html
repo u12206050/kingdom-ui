@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+
+{% block content %}
+<meta http-equiv="refresh" content="999999" >
+
+<h1>Contact Developer</h1>
+<div class="jumbotron">
+<form action="" class="form-horizontal" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group {% if form.name.errors %} has-error {% endif %}">
+        {{form.name.label(class="col-sm-4")}}
+        <div class="col-sm-3" >
+        
+        {{ form.name(placeholder="Dont be shy", class="form-control") }} 
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.name.errors[0] }}
+        
+        </div>
+        <div class="form-group {% if form.email.errors %} has-error {% endif %}">
+        {{form.email.label(class="col-sm-4")}}
+        <div class="col-sm-3">
+        {{ form.email(placeholder="Relax! Wont spam your inbox", class="form-control") }}
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.email.errors[0] }}
+        
+        </div>
+        <div class="form-group {% if form.message.errors %} has-error {% endif %}">
+        {{form.message.label(class="col-sm-4")}}
+        <div class="col-sm-3">
+        {{form.message(placeholder="Dont go hard one me. i am intern", class="form-control")}}
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.message.errors[0] }}
+        
+        </div>
+
+        <button class="btn btn-success" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" type="submit">Send</button>
+</form>
+</div>
+{% endblock %}

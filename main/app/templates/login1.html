@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h1>API CONFIGURATION</h1>
+<form action="/login" method="post" name="login" class="form-horizontal">
+    {{ form.hidden_tag() }}
+    <p>
+        Enter API name:<br>
+        {{ form.api_name(size=80) }}
+        {% for error in form.api_name.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+    </p>
+    <p>
+        Enter Method Type(POST/GET):<br>
+        {{ form.method(size=80) }}
+        {% for error in form.method.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+    </p>
+    <p>
+        Enter End-Point:<br>
+        {{ form.endpoint(size=80) 	}}
+        {% for error in form.endpoint.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+    </p>
+    <p>
+        Enter Maintainer's name:<br>
+	    {{ form.maintainer(size=80) }}
+        {% for error in form.maintainer.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+    </p>
+
+    <p><input type="submit" value="Sign In"></p>
+</form>
+{% endblock %}

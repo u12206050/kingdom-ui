@@ -1,0 +1,69 @@
+{% extends "main.html" %}
+
+{% block content %}
+<meta http-equiv="refresh" content="99999999" >
+
+<h1>API CONFIGURATION</h1>
+<div class="jumbotron">
+<form action="{{url_for('login')}}" class="form-horizontal" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group {% if form.api_name.errors %} has-error {% endif %}">
+        {{form.api_name.label(class="col-sm-4")}}
+        <div class="col-sm-3" >
+        
+        {{ form.api_name(placeholder="E.g.Name to tag end_point", class="form-control") }} 
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.api_name.errors[0] }}
+        
+        </div>
+        <div class="form-group {% if form.method.errors %} has-error {% endif %}">
+        {{form.method.label(class="col-sm-4")}}
+        <div class="col-sm-3">
+        {{ form.method(placeholder="POST/GET", class="form-control") }}
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.method.errors[0] }}
+        
+        </div>
+        <div class="form-group {% if form.endpoint.errors %} has-error {% endif %}">
+        {{form.endpoint.label(class="col-sm-4")}}
+        <div class="col-sm-3">
+        {{form.endpoint(placeholder="E.g. http://api.example.com/abcd", class="form-control")}}
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.endpoint.errors[0] }}
+        
+        </div>
+        <div class="form-group {% if form.maintainer.errors %} has-error {% endif %}">
+        {{form.maintainer.label(class="col-sm-4")}}
+        <div class="col-sm-3">
+        {{form.maintainer(placeholder="Slacker id", class="form-control")}}
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.maintainer.errors[0] }}
+        
+        </div>
+        <div class="form-group {% if form.payload.errors %} has-error {% endif %}">
+        {{form.payload.label(class="col-sm-4")}}
+        <div class="col-sm-3">
+        {{form.payload(placeholder="Dictionary Format(opt.)", class="form-control")}}
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.payload.errors[0] }}
+        
+        </div>
+        <div class="form-group {% if form.output.errors %} has-error {% endif %}">
+        {{form.output.label(class="col-sm-4")}}
+        <div class="col-sm-3">
+        {{form.output(placeholder="Dictionary Format(opt.)", class="form-control")}}
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.output.errors[0] }}
+        
+        </div>
+
+        <button class="btn btn-success" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" type="submit">Lets Go!</button>
+</form>
+</div>
+{% endblock %}

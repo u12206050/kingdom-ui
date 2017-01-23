@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width,initial-scale=1" name=viewport>
+        <!meta http-equiv="refresh" content="5" >
+        <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{url_for('static',filename='images/appstorm.png')}}">
+        {% if title %}
+            <title>{{ title }} - awesome</title>
+        {% else %}
+            <title>Kingdom - Boring</title>
+        {% endif %}
+    </head>
+    <header style="background-color: teal;">
+
+    <!nav class="navbar navbar-fixed-top">
+    <nav class="navbar">
+      <div class="container">
+      
+        <!*************nav bar head begin********************>	
+
+        <!div class="navbar-header" style="height:100% ">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/index">
+          <!img  style="margin-top:-1px; margin-bottom:5px" src="{{url_for('static',filename='images/1484420822_Crown-04.svg')}}" height='40'>
+        <img src="{{url_for('static',filename='images/1484420822_Crown-04.svg')}}" height='40px'>
+	    <!button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top:-5px; margin-bottom:5px">
+            <!span class="glyphicon glyphicon-king" aria-hidden="true"><!/span>&nbsp;&nbsp;
+	    <!/button>
+          </a>
+        </div>
+        <! **********************nav bar head end******************>
+
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="/login"> 
+                  <!button type="button" class="btn btn-success" aria-label="Left Align" style="margin-top:5px; margin-bottom:5px">
+                  <button type="button" class="btn btn-success" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;Add</button>  
+                </a>
+            </li>
+         </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active pull-right">
+                <a href="/contact" >
+                  <!button type="button" class="btn btn-success" aria-label="Right Align" style="margin-top:5px; margin-bottom:5px">
+                  <button type="button" class="btn btn-success" aria-label="Right Align">
+                    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;&nbsp;Contact</button>  
+                    
+                </a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    </header>
+  <body style="background-color: lightgrey;">
+    <!body >
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="{{url_for('static',filename="js/bootstrap.min.js")}}"></script>
+    <div class="container" align='center' style='height:80%'>
+    <!br>
+    <!hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">{{ message }}</div>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>

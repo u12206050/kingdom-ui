@@ -1,0 +1,62 @@
+{% extends "main.html" %}
+{% block content %}
+    <br>
+    <br>
+    
+    <script type="text/javascript">
+    var table = $('#details_table').DataTable();
+    $('#Name').on( 'keyup', function () {
+    table
+        .column(1)
+        .search( this.value )
+        .draw();
+    });
+    $(document).ready(function () {
+        $('#details_table').dataTable({
+           "pagingType": "full_numbers",
+           "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+           "scrollY"  : "400px"
+         });
+    });
+    </script>
+    <table id='details_table' class="table table-condensed table-striped table-hover">
+        <thead>
+            <tr>
+                <th>&nbsp;ID&nbsp;</th>
+                <th>&nbsp;Name&nbsp;</th>
+                <th>&nbsp;Method&nbsp;</th>
+                <th>&nbsp;Maintainer&nbsp;</th>
+                <th>&nbsp;Endpoint&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in cursor %}
+            <tr>
+                <td>
+                    {{ row.id }}
+                </td>
+                <td>
+                    {{ row.name }}
+                </td>
+                <td>
+                    {{ row.method }}
+                </td>
+                <td>
+                    {{ row.maintainer }}
+                </td>
+                <td>
+                    {{ row.endpoint }}
+                </td>
+                <td>
+                    <form action="/edits/{{row.id}}/" method="post">
+                    <input type="submit" value="Edit" />
+                    </form>
+
+                </td>
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

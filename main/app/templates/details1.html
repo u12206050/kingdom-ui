@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block content %}
+    <h1>Hi, {{ user }}!</h1>
+    {% for row in cursor %}
+    <div class="panel panel-primary">
+	    <p> ID: <b>{{ row.id }}</b></p>
+        <p> NAME: <b>{{ row.name }}</b></p>
+        <p> METHOD: <b>{{ row.method }}</b></p>
+        <p> Endpoint: <b>{{ row.endpoint }}</b></p>
+        <p> MAINTAINER: <b>{{ row.maintainer }}</b></p>
+    </div>
+    {% endfor %}
+{% endblock %}

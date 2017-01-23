@@ -1,0 +1,84 @@
+{% extends "main.html" %}
+{% block content %}
+
+    <meta http-equiv="refresh" content="120" >
+    <!br>
+    <!br>
+    <div class="jumbotron" style="background-color: white;">
+    <script type="text/javascript">
+    var table = $('#live_table').DataTable();
+    $('#Name').on( 'keyup', function () {
+    table
+        .column(1)
+        .search( this.value )
+        .draw();
+    });
+    $(document).ready(function () {
+        $('#live_table').dataTable({
+           "pagingType": "full_numbers",
+           "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+           "responsive": true,
+           "scrollY"  : "400px",
+	       "scrollX"  : "100%"
+         });
+    });
+    </script>
+    <table id='live_table' class="table table-condensed table-striped table-hover">
+        <thead>
+            <tr>
+                <th>&nbsp;ID&nbsp;</th>
+                <th>&nbsp;Name&nbsp;</th>
+                <th>&nbsp;Method&nbsp;</th>
+                <th>&nbsp;Maintainer&nbsp;</th>
+                <th>&nbsp;Endpoint&nbsp;</th>
+                <th>&nbsp;Status&nbsp;</th>
+                <th>&nbsp;Result Match&nbsp;</th>
+                <th>&nbsp;Efficiency&nbsp;</th>
+                <th>&nbsp;Edit&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in cursor %}
+            <tr>
+                <td>
+                    {{row.id}} 
+                </td>
+                <td>
+                    {{ row.name }}
+                </td>
+                <td>
+                    {{ row.method }}
+                </td>
+                <td>
+                    {{ row.maintainer }}
+                </td>
+                <td>
+                    {{ row.endpoint }}
+                </td>
+                <td>
+                    {{ row.status }}
+                </td>
+                <td>
+                    {{ row.result }}
+                </td>
+                <td>
+                    {{ row.efficiency }}
+                </td>
+                <td>
+                    <a href="/edits/{{row.id}}/" >
+                    <input type="submit" value="Edit" >
+                    </a>
+                </td>
+          
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="jumbotron" style="background-color: white;">
+    <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/svg.jquery.js"></script>
+    <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/pygal-tooltips.js"></script>
+    {{ bar_chart.render()|safe }}
+</div>
+{% endblock %}
+
